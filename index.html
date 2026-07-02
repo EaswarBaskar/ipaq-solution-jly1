@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPAQ Solutions | Life Sciences Automation</title>
+    <meta name="description"
+        content="iPAQ Solutions delivers process engineering, industrial automation, batch control, and qualification for life sciences and process industries. Based in Bangalore.">
+
+    <!-- SEO: Open Graph -->
+    <meta property="og:title" content="iPAQ Solutions | Life Sciences Automation">
+    <meta property="og:description"
+        content="Advanced engineering and automation solutions for the life sciences and biotech industries.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/hero_bg.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon (inline SVG data URI) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='sans-serif' font-weight='bold' fill='%231E3A5F'>i</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- 3D Core -->
+    <script defer src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+    <!-- Three.js Post-Processing (Bloom) -->
+    <script defer src="https://unpkg.com/three@0.147.0/examples/js/shaders/CopyShader.js"></script>
+    <script defer src="https://unpkg.com/three@0.147.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script defer src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script defer src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script defer src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script defer src="https://unpkg.com/three@0.147.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <!-- Animation Libraries -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Smooth Scroll -->
+    <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <style>
+        /* Lenis required setup */
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+    </style>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- SEO: JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "iPAQ Solutions Pvt. Ltd.",
+      "image": "assets/logo.png",
+      "url": "https://ipaqsolutions.com",
+      "telephone": "+918778284226",
+      "email": "ramanathan.p@ipaqsolutions.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "#954, 2nd Floor, V&S Arcade, H.M.T Layout, Nagasandra Main Road",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "postalCode": "560073",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
+    <!-- Theme Initialization -->
+    <script>
+        // Set Light Mode as the default theme on load
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+    </script>
+</head>
+
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#content-wrapper" id="skip-link"
+        style="position:absolute;top:-100px;left:0;background:var(--c-accent);color:#000;padding:10px 20px;z-index:10000;font-family:var(--font-accent);transition:top 0.3s;"
+        onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to Content</a>
+
+    <!-- Loading Screen -->
+    <div id="loader" role="status" aria-label="Loading">
+        <!-- Animated background particles -->
+        <div class="loader-particles" aria-hidden="true">
+            <span class="lp lp1"></span><span class="lp lp2"></span><span class="lp lp3"></span>
+            <span class="lp lp4"></span><span class="lp lp5"></span><span class="lp lp6"></span>
+            <span class="lp lp7"></span><span class="lp lp8"></span>
+        </div>
+
+        <!-- Scan line -->
+        <div class="loader-scan" aria-hidden="true"></div>
+
+        <!-- Central content -->
+        <div class="loader-inner">
+            <!-- DNA Helix -->
+            <div class="dna-helix" aria-hidden="true">
+                <div class="dna-strand dna-strand-1">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="dna-rungs" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="dna-strand dna-strand-2">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- Logo -->
+            <img src="assets/logo.png" alt="iPAQ Solutions Logo" class="loader-logo">
+
+            <!-- Tagline -->
+            <div class="loader-sub">Life Sciences Automation &amp; Process Engineering</div>
+
+            <!-- Progress -->
+            <div class="loader-progress-wrap">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                    <div class="progress-glow"></div>
+                </div>
+                <div class="loader-percent"><span id="loader-pct">0</span>%</div>
+            </div>
+
+            <!-- Status text -->
+            <div class="loader-status" id="loader-status">Initializing systems...</div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-circle" aria-hidden="true"></div>
+
+    <div id="bg-track" aria-hidden="true">
+        <!-- bg-slide 0: Home – deep-space blue gradient -->
+        <div class="bg-slide active-bg" style="background: radial-gradient(ellipse at 20% 50%, #0a2a4a 0%, #020c1b 55%, #040d18 100%); opacity: 1;"></div>
+        <!-- bg-slide 1: Showcase – teal/cyan tech gradient -->
+        <div class="bg-slide" style="background: radial-gradient(ellipse at 70% 30%, #003d4d 0%, #011525 50%, #020c1b 100%); opacity: 0;"></div>
+        <!-- bg-slide 2: About/Services – deep indigo gradient -->
+        <div class="bg-slide" style="background: radial-gradient(ellipse at 30% 70%, #120a2e 0%, #0d1a2e 45%, #020c1b 100%); opacity: 0;"></div>
+    </div>
+
+    <!-- Persistent 3D Canvas -->
+    <div id="three-canvas-container" style="position:fixed; inset:0; z-index:-1; pointer-events:none;"></div>
+
+    <!-- UI Overlays -->
+    <div class="ui-brackets" aria-hidden="true" style="z-index: 50;">
+        <div class="bracket tl" style="border-color: rgba(255,255,255,0.1);"></div>
+        <div class="bracket tr" style="border-color: rgba(255,255,255,0.1);"></div>
+        <div class="bracket bl" style="border-color: rgba(255,255,255,0.1);"></div>
+        <div class="bracket br" style="border-color: rgba(255,255,255,0.1);"></div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-inner">
+            <span class="accent">iPAQ</span> &nbsp;•&nbsp; Process Automation &nbsp;•&nbsp; Bioprocess Engineering
+            &nbsp;•&nbsp; Life Sciences &nbsp;•&nbsp; Commissioning &nbsp;•&nbsp; Qualification &nbsp;•&nbsp; Embedded Engineering &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="accent">iPAQ</span> &nbsp;•&nbsp; Process Automation &nbsp;•&nbsp; Bioprocess Engineering
+            &nbsp;•&nbsp; Life Sciences &nbsp;•&nbsp; Commissioning &nbsp;•&nbsp; Qualification &nbsp;•&nbsp; Embedded Engineering &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+
+    <!-- Slide Position Indicator -->
+    <div class="slide-indicator" aria-label="Slide navigation">
+        <button class="slide-dot active" data-slide="0" aria-label="Go to Home"></button>
+        <button class="slide-dot" data-slide="1" aria-label="Go to Showcase"></button>
+        <button class="slide-dot" data-slide="2" aria-label="Go to About"></button>
+        <button class="slide-dot" data-slide="3" aria-label="Go to Services"></button>
+        <button class="slide-dot" data-slide="4" aria-label="Go to Clients"></button>
+        <button class="slide-dot" data-slide="5" aria-label="Go to Contact"></button>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="logo"><img src="assets/logo.png" alt="iPAQ Solutions Logo"></div>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="#home" data-index="0" class="active">Home</a>
+            <a href="#showcase" data-index="1">Tech</a>
+            <a href="#about" data-index="2">About Us</a>
+            <a href="#products" data-index="3">Services</a>
+            <a href="#clients" data-index="4">Clients</a>
+            <a href="#contact" data-index="5">Contact</a>
+            
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Content Wrapper -->
+    <main id="content-wrapper" tabindex="-1">
+
+        <!-- Section 0: Home -->
+        <section class="section active" id="home">
+            <div class="home-content">
+                <div class="hero-text">
+                    <div class="badge">
+                        <div class="dot"></div> 15+ YEARS EXPERIENCE
+                    </div>
+                    <h1 class="headline">
+                        <div class="hl-line1">ENGINEERING</div>
+                        <div class="hl-line2">SERVICES FOR</div>
+                        <div class="hl-line3">LIFE SCIENCES</div>
+                    </h1>
+                    <p class="subtitle">Process engineering, industrial automation, batch control, and qualification for pharmaceutical excellence.</p>
+                    <div class="cta-group">
+                        <a href="#products" class="btn" data-index="3">Explore Services</a>
+                        <a href="#contact" class="btn btn-outline" data-index="5">Contact Us</a>
+                    </div>
+                </div>
+                <div class="stats-wrapper">
+                    <div class="stats-card">
+                        <div class="stat-item" data-count="15" data-suffix="+">
+                            <h4>15+</h4>
+                            <p>Years Exp</p>
+                        </div>
+                        <div class="stat-item" data-count="100" data-suffix="+">
+                            <h4>100+</h4>
+                            <p>Projects</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>BLR</h4>
+                            <p>Location</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>PVT</h4>
+                            <p>Limited</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: 3D Showcase (Story Step 1) -->
+        <section class="section" id="showcase">
+            <div class="showcase-content">
+                <div class="showcase-sub">PROCESS AUTOMATION</div>
+                <h2 class="showcase-title">INNOVATE</h2>
+            </div>
+
+        </section>
+
+        <!-- Section 2: About -->
+        <section class="section" id="about">
+            <h2 class="about-text">
+                iPAQ Solutions is an <span>integrated</span> solutions partner delivering <span>high-quality</span> automation, bioprocess engineering, and qualification for <span>pharmaceutical excellence</span>.
+            </h2>
+        </section>
+
+        <!-- Section 2: Products -->
+        <section class="section" id="products">
+            <h2 class="section-title" data-title="OUR CORE SERVICES">OUR CORE SERVICES</h2>
+            <div class="product-grid">
+                <div class="product-item" data-name="Bioprocess Engineering" data-num="01">
+                    <svg class="product-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 2v7.31"></path><path d="M14 9.3V2"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path>
+                    </svg>
+                    <div>
+                        <h3>BIOPROCESS<br>ENGINEERING</h3>
+                        <div class="product-meta">P&ID, Reviews <span>→</span></div>
+                    </div>
+                </div>
+                <div class="product-item" data-name="Process Automation" data-num="02">
+                    <svg class="product-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <div>
+                        <h3>PROCESS<br>AUTOMATION</h3>
+                        <div class="product-meta">Siemens PCS 7 <span>→</span></div>
+                    </div>
+                </div>
+                <div class="product-item" data-name="Commissioning & Qualification" data-num="03">
+                    <svg class="product-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <div>
+                        <h3>COMMISSIONING &<br>QUALIFICATION</h3>
+                        <div class="product-meta">Compliance Ready <span>→</span></div>
+                    </div>
+                </div>
+                <div class="product-item" data-name="Embedded Engineering" data-num="04">
+                    <svg class="product-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                    <div>
+                        <h3>EMBEDDED<br>ENGINEERING</h3>
+                        <div class="product-meta">Support & Optimization <span>→</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Clients -->
+        <section class="section" id="clients" style="padding-left:0; padding-right:0;">
+            <div style="padding: 0 60px;">
+                <h2 class="section-title" data-title="TRUSTED PARTNERS">TRUSTED PARTNERS</h2>
+            </div>
+            <div class="client-ticker-wrap">
+                <div class="client-ticker-inner">
+                    <!-- First Set -->
+                    <div class="client-brand-item"><img src="assets/logos/micro-labs.png" class="client-brand-logo" alt="Micro Labs">
+                    </div>
+                    <div class="client-brand-item"><img src="assets/logos/somerset.png" class="client-brand-logo" alt="Somerset"></div>
+                    <div class="client-brand-item"><img src="assets/logos/bharat-biotech.png" class="client-brand-logo" alt="Bharat Biotech">
+                    </div>
+                    <div class="client-brand-item"><img src="assets/logos/serum.png"
+                            class="client-brand-logo" alt="Serum Institute"></div>
+                    <!-- Cloned Set for Infinite Loop -->
+                    <div class="client-brand-item"><img src="assets/logos/micro-labs.png" class="client-brand-logo" alt="Micro Labs">
+                    </div>
+                    <div class="client-brand-item"><img src="assets/logos/somerset.png" class="client-brand-logo" alt="Somerset"></div>
+                    <div class="client-brand-item"><img src="assets/logos/bharat-biotech.png" class="client-brand-logo" alt="Bharat Biotech">
+                    </div>
+                    <div class="client-brand-item"><img src="assets/logos/serum.png"
+                            class="client-brand-logo" alt="Serum Institute"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Contact -->
+        <section class="section" id="contact">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2 class="section-title" data-title="LET'S CONNECT"
+                        style="font-size:clamp(3rem,5vw,5rem);margin-bottom:15px;">LET'S CONNECT</h2>
+                    <h3>HEADQUARTERS</h3>
+                    <p>#954, 2nd Floor, V&S Arcade,<br>H.M.T Layout, Nagasandra Main Road,<br>Bangalore, Karnataka – 560073</p>
+                    <h3>REACH US</h3>
+                    <p>
+                        <a href="tel:+918778284226">+91 87782 84226</a><br>
+                        <a href="mailto:ramanathan.p@ipaqsolutions.com">ramanathan.p@ipaqsolutions.com</a>
+                    </p>
+                    <div class="social-row">
+                        <a href="https://wa.me/918778284226?text=Hello%2C%20I%20am%20interested%20in%20your%20automation%20services%20and%20would%20like%20to%20discuss%20a%20potential%20project."
+                            target="_blank" rel="noopener" class="social-btn whatsapp-btn"
+                            aria-label="Chat on WhatsApp">
+                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.946487637812!2d77.49877287574824!3d13.039078213393886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3cc5ac985293%3A0x8dfca5f1d354d4fd!2s2GQ2%2BJGC%20V%26S%20Arcade%2C%20954%2C%20Nagasandra%20Main%20Rd%2C%20near%20sbi%20bank%2C%20HMT%20Layout%2C%20Nagasandra%2C%20Bengaluru%2C%20Karnataka%20560073!5e0!3m2!1sen!2sin!4v1773926279704!5m2!1sen!2sin"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="iPAQ Solutions location on Google Maps"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Detail Panel Overlay -->
+    <div id="detail-panel" aria-hidden="true">
+        <button class="close-detail">CLOSE [ESC]</button>
+        <div class="detail-header">
+            <span id="detail-category">SERVICE CATEGORY</span>
+            <h2 id="detail-title">Service Name</h2>
+        </div>
+        <div class="detail-content" id="detail-desc">
+            Specific service description goes here...
+        </div>
+        <div class="detail-specs" id="detail-specs">
+            <!-- Dynamic specs -->
+        </div>
+        <a href="#contact" class="btn btn-outline" style="margin-top:20px; width:fit-content;" id="cta-detail">Inquire
+            Now</a>
+    </div>
+
+    <script defer src="script.js"></script>
+</body>
+
+</html>
